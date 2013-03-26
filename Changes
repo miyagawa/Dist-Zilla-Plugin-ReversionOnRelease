@@ -1,4 +1,6 @@
 Revision history for Dist-Zilla-Plugin-ReversionOnRelease
 
 {{$NEXT}}
+
+0.01  2013-03-26 11:23:36 PDT
         - Initial release

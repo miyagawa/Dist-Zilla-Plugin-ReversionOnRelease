@@ -40,6 +40,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease/issues"
+      },
+      "homepage" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease.git",
+         "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease"
+      }
+   },
    "version" : "0.01"
 }
 
