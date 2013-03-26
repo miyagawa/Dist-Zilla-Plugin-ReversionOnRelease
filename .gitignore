@@ -1,0 +1,6 @@
+/Dist-Zilla-Plugin-ReversionOnRelease-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
