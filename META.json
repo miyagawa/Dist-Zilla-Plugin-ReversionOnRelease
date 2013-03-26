@@ -27,7 +27,8 @@
       "runtime" : {
          "requires" : {
             "Dist::Zilla" : "4.2",
-            "Perl::Version" : "1.011"
+            "Perl::Version" : "1.011",
+            "perl" : "5.008005"
          }
       },
       "test" : {
@@ -51,6 +52,6 @@
          "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 
