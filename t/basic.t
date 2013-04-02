@@ -49,8 +49,15 @@ test_build 't/dist/v1.0.0', sub {
     is $version, 'v1.0.1';
 };
 
+test_build 't/dist/1.0019', sub {
+    my($content, $version) = @_;
+
+    like $content, qr/\$VERSION = '1.0020'/;
+    is $version, '1.0020';
+};
+
 {
-    local $ENV{V} = '1.2.0';
+    local $ENV{V} = 'v1.2.0';
     test_build 't/dist/v1.0.0', sub {
         my($content, $version) = @_;
 

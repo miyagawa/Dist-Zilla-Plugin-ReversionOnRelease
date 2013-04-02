@@ -4,7 +4,8 @@ use strict;
 use 5.008_005;
 our $VERSION = '0.02';
 
-use Perl::Version;
+use version;
+use Version::Next;
 use Moose;
 with(
     'Dist::Zilla::Role::FileMunger',
@@ -16,10 +17,11 @@ with(
 has 'prompt' => (is => 'ro', isa => 'Bool', default => 0);
 
 # from perl-reversion
-my $VersionRegexp = Perl::Version::REGEX;
-$VersionRegexp =
+my $VersionRegexp =
   qr{ ^ ( .*?  [\$\*] (?: \w+ (?: :: | ' ) )* VERSION \s* = \D*? )
-                $VersionRegexp
+           (?^x: ( (?i: Revision: \s+ ) | v | )
+                 ( \d+ (?: [.] \d+)* )
+                 ( (?: _ \d+ )? ) )
                 ( .* ) $ }x;
 
 sub munge_files {
@@ -32,18 +34,18 @@ sub munge_files {
     if ($self->prompt) {
         my $given_version = $self->zilla->chrome->prompt_str(
             "Next release version? ", {
-                default => "$version",
+                default => $version,
                 check => sub {
-                    eval { Perl::Version->new($_[0]); 1 },
+                    eval { version->parse($_[0]); 1 },
                 },
             },
         );
 
-        $version->set($given_version);
+        $version = $given_version;
     }
 
     $self->munge_file($_, $version) for @{ $self->found_files };
-    $self->zilla->version("$version");
+    $self->zilla->version($version);
 
     return;
 }
@@ -51,19 +53,14 @@ sub munge_files {
 sub reversion {
     my $self = shift;
 
-    my $new_ver = Perl::Version->new($self->zilla->version);
+    my $new_ver = $self->zilla->version;
 
     if ($ENV{V}) {
         $self->log("Overriding VERSION to $ENV{V}");
-        $new_ver->set($ENV{V});
+        $new_ver = $ENV{V};
     } elsif ($self->is_released($new_ver)) {
         $self->log_debug("$new_ver is released. Bumping it");
-        if ($new_ver->is_alpha) {
-            $new_ver->inc_alpha;
-        } else {
-            my $pos = $new_ver->components - 1;
-            $new_ver->increment($pos);
-        }
+        $new_ver = Version::Next::next_version($new_ver);
     } else {
         $self->log_debug("$new_ver is not released yet. No need to bump");
     }
@@ -124,7 +121,7 @@ sub munge_file {
 
     my $scanner = $self->filter_pod(sub {
         s{$VersionRegexp}{
-            $self->rewrite_version($file, $1, Perl::Version->new($2.$3.$4), $5, $new_ver)
+            $self->rewrite_version($file, $1, $2.$3.$4, $5, $new_ver)
         }e;
     });
 
@@ -166,6 +163,10 @@ L<Dist::Zilla::Plugin::VersionFromModule> so that current VERSION is
 taken out of your main module, and then the released file is written
 back after the release with L<Dist::Zilla::Plugin::CopyFilesFromRelease>.
 
+Unlike C<perl-reversion>, this module uses L<Version::Next> to get
+more naturally incremented version, instead of a little strict 3-digit
+rules in L<Perl::Version>.
+
 You B<should not> this plugin with any code munging or Pod::Weaver
 plugins.
 
@@ -175,7 +176,7 @@ override that by either running the plugin with C<prompt> option to
 give the desired value from the prompt, or by setting the environment
 variable C<V>:
 
-  > V=1.0.0 dzil release
+  > V=1.001000 dzil release
 
 =head1 AUTHOR
 
@@ -192,6 +193,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Dist::Milla> L<Perl::Version> L<perl-reversion> L<Dist::Zilla::Plugin::BumpVersion>
+L<Dist::Milla> L<Version::Next> L<Dist::Zilla::Plugin::BumpVersion>
 
 =cut
