@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-ReversionOnRelease
 
 {{$NEXT}}
 
+0.03  2013-04-01 20:31:48 PDT
+        - Use Version::Next instead of Perl::Version
+
 0.02  2013-03-26 12:34:45 PDT
         - Specify minimum perl version
 

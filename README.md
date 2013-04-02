@@ -19,6 +19,10 @@ likely use this plugin in combination with
 taken out of your main module, and then the released file is written
 back after the release with [Dist::Zilla::Plugin::CopyFilesFromRelease](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::CopyFilesFromRelease).
 
+Unlike `perl-reversion`, this module uses [Version::Next](http://search.cpan.org/perldoc?Version::Next) to get
+more naturally incremented version, instead of a little strict 3-digit
+rules in [Perl::Version](http://search.cpan.org/perldoc?Perl::Version).
+
 You __should not__ this plugin with any code munging or Pod::Weaver
 plugins.
 
@@ -28,7 +32,7 @@ override that by either running the plugin with `prompt` option to
 give the desired value from the prompt, or by setting the environment
 variable `V`:
 
-    > V=1.0.0 dzil release
+    > V=1.001000 dzil release
 
 # AUTHOR
 
@@ -45,4 +49,4 @@ it under the same terms as Perl itself.
 
 # SEE ALSO
 
-[Dist::Milla](http://search.cpan.org/perldoc?Dist::Milla) [Perl::Version](http://search.cpan.org/perldoc?Perl::Version) [perl-reversion](http://search.cpan.org/perldoc?perl-reversion) [Dist::Zilla::Plugin::BumpVersion](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::BumpVersion)
+[Dist::Milla](http://search.cpan.org/perldoc?Dist::Milla) [Version::Next](http://search.cpan.org/perldoc?Version::Next) [Dist::Zilla::Plugin::BumpVersion](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::BumpVersion)
