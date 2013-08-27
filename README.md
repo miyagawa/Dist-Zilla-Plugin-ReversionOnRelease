@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::ReversionOnRelease - Bump and reversion $VERSION on release
     [ReversionOnRelease]
     prompt = 1
     [CopyFilesFromRelease]
-    match = \a.pm$
+    match = \.pm$
 
 # DESCRIPTION
 
