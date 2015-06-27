@@ -197,6 +197,22 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Dist::Milla> L<Version::Next> L<Dist::Zilla::Plugin::BumpVersion>
+=over 4
+
+=item * L<Dist::Milla>
+
+=item * L<Version::Next>
+
+=item * L<Dist::Zilla::Plugin::BumpVersion>
+
+=item * L<Dist::Zilla::Plugin::RewriteVersion> - also takes $VERSION from the main module; ensures all $VERSIONs are consistent 
+
+=item * L<Dist::Zilla::Plugin::BumpVersionAfterRelease> - edits the $VERSION in the repository code to reflect the new version, after release
+
+=item * L<Dist::Zilla::Plugin::RewriteVersion::Transitional> - like L<Dist::Zilla::Plugin::RewriteVersion>, but munges the version in if it was not already present
+
+=item * L<Dist::Zilla::Plugin::BumpVersionAfterRelease::Transitional> - like L<Dist::Zilla::Plugin::BumpVersionAfterRelease>, but also adds the $VERSION into the repository code if it was not already present
+
+=back
 
 =cut
