@@ -175,7 +175,7 @@ Unlike C<perl-reversion>, this module uses L<Version::Next> to get
 more naturally incremented version, instead of a little strict 3-digit
 rules in L<Perl::Version>.
 
-You B<should not> this plugin with any code munging or Pod::Weaver
+You B<should not> use this plugin with any code munging or Pod::Weaver
 plugins.
 
 By default, this plugin bumps version by the smallest possible
