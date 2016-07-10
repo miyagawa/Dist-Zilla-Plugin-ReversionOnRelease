@@ -2,6 +2,10 @@ Revision history for Dist-Zilla-Plugin-ReversionOnRelease
 
 {{$NEXT}}
 
+0.06  2016-07-10 11:30:37 PDT
+        - Support package NAME VERSION syntax (skaji)
+        - Doc improvements
+
 0.05  2013-08-27 15:51:28 PDT
         - Fix minor typo in SYNOPSIS
 

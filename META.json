@@ -4,33 +4,34 @@
       "Tatsuhiko Miyagawa <miyagawa@bulknews.net>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.4, Dist::Zilla version 4.300036, CPAN::Meta::Converter version 2.132140",
+   "generated_by" : "Dist::Milla version v1.0.16, Dist::Zilla version 6.006, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "Dist-Zilla-Plugin-ReversionOnRelease",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
+         "eg",
+         "examples",
          "inc",
          "share",
-         "eg",
-         "examples"
+         "t",
+         "xt"
       ]
    },
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.026"
+            "Module::Build::Tiny" : "0.034"
          }
       },
       "develop" : {
          "requires" : {
+            "Dist::Milla" : "v1.0.16",
             "Test::Pod" : "1.41"
          }
       },
@@ -62,6 +63,11 @@
          "web" : "https://github.com/miyagawa/Dist-Zilla-Plugin-ReversionOnRelease"
       }
    },
-   "version" : "0.05"
+   "version" : "0.06",
+   "x_contributors" : [
+      "Karen Etheridge <ether@cpan.org>",
+      "Shoichi Kaji <skaji@cpan.org>"
+   ],
+   "x_serialization_backend" : "Cpanel::JSON::XS version 3.0217"
 }
 
