@@ -22,7 +22,11 @@ qr/ ( (?i: Revision: \s+ ) | v | )
     ( (?: _ \d+ )? ) /x;
 # from perl-reversion
 my $VersionRegexp =
-  qr{ ^ ( .*?  [\$\*] (?: \w+ (?: :: | ' ) )* VERSION \s* = \D*? )
+  qr{ ^ (
+            .*?  [\$\*] (?: \w+ (?: :: | ' ) )* VERSION \s* = \D*?
+            |
+            \s* package \s+ [\w\:\']+ \s+
+        )
             ( (?i: Revision: \s+ ) | v | )
             ( \d+ (?: [.] \d+)* )
             ( (?: _ \d+ )? )
